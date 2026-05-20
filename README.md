@@ -96,10 +96,14 @@ To reproduce the analysis and figures, the scripts must be run in a specific seq
 
 ### Phase 2: Spatial Indicator Calculations
 Run these scripts to parse the Land Change Modeler (LCM) scenario outputs and calculate the diagnostic landscape metrics. Each script automatically writes its respective summarized dataset (`.csv`) to `../Data/Analysis_Outputs`.
+
 2. **`calc_forestConnectivity_analysis.R`** 
+
 3. **`calc_LandscapeMetrics.R`** (Outputs: `landscape_Metrics.csv`)
-4. **`calc_Forest_Rangeland_adjacency.R`** (Outputs: `Forest_rangeland_adjacency_sens1.csv`)
-5. **`calc_Forest_Cropland_adjacency.R`** (Outputs: `Forest_cropland_adjacency_sens1.csv`)
+   
+5. **`calc_Forest_Rangeland_adjacency.R`** (Outputs: `Forest_rangeland_adjacency_sens1.csv`)
+   
+7. **`calc_Forest_Cropland_adjacency.R`** (Outputs: `Forest_cropland_adjacency_sens1.csv`)
 
 ### Phase 3: Data Visualization & Figure Generation
 Once all `.csv` summaries and spatial arrays are generated in the steps above, you can execute the plotting scripts independently to reproduce the paper's final figures:
