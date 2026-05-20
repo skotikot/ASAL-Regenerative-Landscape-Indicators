@@ -1,2 +1,73 @@
-# ASAL-Regenerative-Landscape-Indicators
-R scripts and spatial workflows for evaluating landscape heterogeneity, forest fragmentation, and functional adjacency indicators across group ranch and privatized land tenure regimes in Narok County, Kenya, using Land Change Modeler (LCM) scenario outputs.
+# Modeling Regenerative Pathways for Multifunctional Landscapes Under Increasing Environmental Stressors
+
+This repository contains the replication code, spatial analysis workflows, and data visualization scripts associated with the manuscript:
+
+> **Indicators of Regenerative Landscape Pathways Under Contrasting Land Tenure**
+> *Susan M. Kotikot, Erica A.H. Smithwick, Sarah Gergel, Jedidah Nankaya, Romulus Abila*
+> Correspondence: [susan.kotikot@uconn.edu](mailto:susan.kotikot@uconn.edu)
+
+---
+
+## Project Overview
+
+Multifunctional arid and semi-arid landscapes (ASALs) face intensifying pressures from climate variability, shifting land tenure systems, and land-use change. This project implements a spatially explicit scenario framework using a calibrated **Land Change Modeler (LCM)** execution to simulate future landscape patterns under two contrasting land tenure regimes in **Narok County, Kenya**:
+1. **Group Ranch (GR) Governance** (Communal/Traditional arrangements)
+2. **Privatization (PR)** (Subdivided, individually managed parcels)
+
+Across these tenure regimes, various **regenerative management strategies** are modeled at distinct baseline transition adjustments (Sensitivity levels: **Sens1 = 25%**, **Sens2 = 50%**, and **Sens3 = 75%**). These scripts evaluate landscape configuration indicators—specifically landscape heterogeneity, forest fragmentation, and functional landscape adjacency (cropland-forest and rangeland-forest interfaces)—to act as diagnostic signals of regenerative landscape capacity.
+
+---
+
+## Repository Structure & Core Scripts
+
+The repository is organized into data processing workflows (`calc_*.R`), global data configurations (`Load_*.R`), and publication-grade visualization scripts (`plot_*.R`).
+
+### 1. Data Ingestion & Setup
+* **`Load_scenarioOutputs.R`**
+    * *Purpose:* Standardizes environment setups and auto-loads raw raster projections (`.rst` format) from LCM simulations.
+    * *Functions:* Converts zero/background pixels uniformly to `NA`, applies consistency flags for spatial computations, and divides outputs into respective sensitivity group lists (`lst_sens1`, `lst_sens2`, `lst_sens3`) matching the baseline and intervention runs.
+
+### 2. Spatial Indicator & Metric Computations
+* **`calc_LandscapeMetrics.R`**
+    * *Purpose:* Uses the `landscapemetrics` and `terra` packages to derive patch- and landscape-level configuration metrics.
+    * *Key Output:* Measures class spatial parameters (e.g., Edge Density, Fragmentation indices) across land cover types (Forest, Rangeland, Cropland, Urban) across all scenarios.
+* **`calc_Forest_Rangeland_adjacency.R`**
+    * *Purpose:* Quantifies the functional proximity/refugia benefits of dryland mosaics. 
+    * *Methodology:* Uses a circular focal window matrix (`terra::focal`) to calculate the exact proportion of communal/private rangeland situated within a critical `500m` buffer zone of a forest patch.
+* **`calc_Forest_Cropland_adjacency.R`**
+    * *Purpose:* Computes cross-habitat spillover indicators (e.g., ecosystem services, insect pollination, and pest regulation potentials).
+    * *Methodology:* Identifies individual cropland pixels and evaluates adjacent forest canopy density within predetermined neighborhood scales.
+* **`calc_forestConnectivity_analysis.R`**
+    * *Purpose:* Generates landscape resistance surfaces and Minimum Cost Path Networks.
+    * *Methodology:* Utilizes the `grainscape`, `sf`, and `terra` libraries to calculate structural connectivity, build Minimum Path Graphs (MPG), and isolate structural link layers (e.g., short habitat links $< 500\text{m}$) used to configure incentive-based land target layers.
+
+### 3. Data Visualization & Figures
+* **`plot_IndicatorBars.R`**
+    * *Purpose:* Code to generate composite figure comparisons of configuration outputs (Edge Density, Agro-Forestry interfaces, Rangeland adjacency metrics). Uses `cowplot::plot_grid` to stitch multiple ggplot objects into a clean, horizontal multi-panel array.
+* **`plot_IndicatorSensitivity.R`**
+    * *Purpose:* Evaluates the sensitivity of spatial indicators across stepping thresholds (25%, 50%, and 75% transition adjustments).
+    * *Visual Style:* Fully customized text structures using `Cambria` typography, explicit facet panels, and discrete point/line breaks tracking Group Ranch vs. Privatization trajectories.
+* **`plot_RadarChart_multistrategy.R`**
+    * *Purpose:* Implements a custom `coord_radar()` extension over `ggplot2` to evaluate multi-component tradeoffs across policy bundles. Translates programmatic lookup codes into multi-axis structural diagrams mapping edge effects and refugia capabilities.
+* **`plot_RegenScenarios_maps.R`**
+    * *Purpose:* Ingests spatial simple features (`sf`), spatiotemporal arrays (`stars`), and `tidyterra` geometries to render multi-panel geographical site layouts tracking:
+        1. Large vs. Small patches distribution
+        2. Least Cost Paths (LCP) patch connectivity
+        3. Strategic water-pan availability rings
+
+---
+
+## Directory Schema Requirement
+
+To execute the scripts without directory breaking, maintain the following parent-folder orientation:
+
+```text
+├── Data/
+│   ├── LCM_Outputs/             # Contains raw simulated .rst raster mosaics
+│   ├── Processed/               # Intermediate resistance surfaces & distance files
+│   ├── Analysis_Outputs/        # Saved tabular summaries (.csv) of indicators
+│   └── ComplementaryFiles/      # Narok County vector boundary layers (.shp)
+└── Scripts/
+    ├── Load_scenarioOutputs.R   # Run this first to establish environment arrays
+    ├── calc_...                 # Processing and structural scripts
+    └── plot_...                 # Visualization and layout scripts
