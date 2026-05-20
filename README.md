@@ -68,6 +68,25 @@ The repository is organized into data processing workflows (`calc_*.R`), global 
     * *Purpose:* Evaluates the sensitivity of spatial indicators across stepping thresholds (25%, 50%, and 75% transition adjustments).
 ---
 
+
+## Directory Schema Requirement
+
+To execute the scripts without directory breaking, maintain the following parent-folder orientation:
+
+```text
+├── Data/
+│   ├── LCM_Outputs/             # Contains raw simulated .rst raster mosaics
+│   ├── Processed/               # Intermediate resistance surfaces & distance files
+│   ├── Analysis_Outputs/        # Saved tabular summaries (.csv) of indicators
+│   └── ComplementaryFiles/      # Narok County vector boundary layers (.shp)
+└── Scripts/
+    ├── Load_scenarioOutputs.R   # Run this first to establish environment arrays
+    ├── calc_...                 # Processing and structural scripts
+    └── plot_...                 # Visualization and layout scripts
+```                  
+
+---
+
 ## Recommended Script Execution Order
 
 To reproduce the analysis and figures, the scripts must be run in a specific sequence. This ensures that environmental spatial layers are generated first, followed by tabular indicator calculations, and finally the plots.
@@ -93,28 +112,9 @@ Input data for  * `plot_IndicatorSensitivity.R` is provided in the "Analysis_Out
 
 All processes are engineered within the R Statistical Environment ($>4.0.0$). Ensure you have the following processing libraries installed:
 
-install.packages(c("dplyr", "tidyr", "readr", "ggplot2", "sf", 
+`install.packages(c("dplyr", "tidyr", "readr", "ggplot2", "sf", 
                    "terra", "grainscape", "tidyterra", "stars", 
-                   "cowplot", "landscapemetrics", "stringr"))
-
-## Directory Schema Requirement
-
-To execute the scripts without directory breaking, maintain the following parent-folder orientation:
-
-```text
-├── Data/
-│   ├── LCM_Outputs/             # Contains raw simulated .rst raster mosaics
-│   ├── Processed/               # Intermediate resistance surfaces & distance files
-│   ├── Analysis_Outputs/        # Saved tabular summaries (.csv) of indicators
-│   └── ComplementaryFiles/      # Narok County vector boundary layers (.shp)
-└── Scripts/
-    ├── Load_scenarioOutputs.R   # Run this first to establish environment arrays
-    ├── calc_...                 # Processing and structural scripts
-    └── plot_...                 # Visualization and layout scripts
-```                  
-
----
-
+                   "cowplot", "landscapemetrics", "stringr"))`
 
 ## Citation & Licensing
 
