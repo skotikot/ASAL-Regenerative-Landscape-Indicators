@@ -100,7 +100,6 @@ install.packages(c("dplyr", "tidyr", "readr", "ggplot2", "sf",
 ## Directory Schema Requirement
 
 To execute the scripts without directory breaking, maintain the following parent-folder orientation:
-                   
 
 ```text
 ├── Data/
@@ -109,9 +108,10 @@ To execute the scripts without directory breaking, maintain the following parent
 │   ├── Analysis_Outputs/        # Saved tabular summaries (.csv) of indicators
 │   └── ComplementaryFiles/      # Narok County vector boundary layers (.shp)
 └── Scripts/
-    ├── Load_scenarioOutputs.R   # Run this first to load predicted LULC maps
+    ├── Load_scenarioOutputs.R   # Run this first to establish environment arrays
     ├── calc_...                 # Processing and structural scripts
-    └── plot_...                 # Visualization and layout scripts```
+    └── plot_...                 # Visualization and layout scripts
+```                  
 
 ---
 
