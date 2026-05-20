@@ -1,5 +1,3 @@
-# Modeling Regenerative Pathways for Multifunctional Landscapes Under Increasing Environmental Stressors
-
 This repository contains the replication code, spatial analysis workflows, and data visualization scripts associated with the manuscript:
 
 > **Indicators of Regenerative Landscape Pathways Under Contrasting Land Tenure**
