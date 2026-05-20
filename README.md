@@ -83,7 +83,7 @@ To execute the scripts without directory breaking, maintain the following parent
     ├── calc_...                 # Processing and structural scripts
     └── plot_...                 # Visualization and layout scripts
 
----
+---```
 
 ## Recommended Script Execution Order
 
