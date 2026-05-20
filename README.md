@@ -93,13 +93,13 @@ Input data for  * `plot_IndicatorSensitivity.R` is provided in the "Analysis_Out
 
 All processes are engineered within the R Statistical Environment ($>4.0.0$). Ensure you have the following processing libraries installed:
 
-## Directory Schema Requirement
-
-To execute the scripts without directory breaking, maintain the following parent-folder orientation:
-
 install.packages(c("dplyr", "tidyr", "readr", "ggplot2", "sf", 
                    "terra", "grainscape", "tidyterra", "stars", 
                    "cowplot", "landscapemetrics", "stringr"))
+
+## Directory Schema Requirement
+
+To execute the scripts without directory breaking, maintain the following parent-folder orientation:
                    
 
 ```text
