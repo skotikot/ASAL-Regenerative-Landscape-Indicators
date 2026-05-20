@@ -81,9 +81,9 @@ To execute the scripts without directory breaking, maintain the following parent
 └── Scripts/
     ├── Load_scenarioOutputs.R   # Run this first to load predicted LULC maps
     ├── calc_...                 # Processing and structural scripts
-    └── plot_...                 # Visualization and layout scripts
+    └── plot_...                 # Visualization and layout scripts```
 
----```
+---
 
 ## Recommended Script Execution Order
 
