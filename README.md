@@ -1,8 +1,6 @@
 This repository contains the replication code, spatial analysis workflows, and data visualization scripts associated with the manuscript:
 
-> **Indicators of Regenerative Landscape Pathways Under Contrasting Land Tenure**
-> *Susan M. Kotikot, Erica A.H. Smithwick, Sarah Gergel, Jedidah Nankaya, Romulus Abila*
-> Correspondence: [susan.kotikot@uconn.edu](mailto:susan.kotikot@uconn.edu)
+> **Spatial indicators of regenerative landscape capacity under alternative management and policies (submitted for publication)**
 
 ---
 
