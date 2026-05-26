@@ -110,7 +110,7 @@ Input data for  * `plot_IndicatorSensitivity.R` is provided in the "Analysis_Out
 
 ## Data Access
 
-Data availalable through Zenodo: 10.5281/zenodo.20382345 (DOI reseaved and should become available once the manuscript is published)
+Data availalable through Zenodo at [DOI: 10.5281/zenodo.20382345](https://doi.org/10.5281/zenodo.20382345), and extract into the Data folder. (DOI reseaved and should become available once the manuscript is published)
 
 ## Software & Package Prerequisites
 
