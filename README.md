@@ -108,6 +108,10 @@ Input data for  * `plot_IndicatorSensitivity.R` is provided in the "Analysis_Out
 
 ---
 
+## Data Access
+
+Data availalable through Zenodo: 10.5281/zenodo.20382345 (DOI reseaved and should become available once the manuscript is published)
+
 ## Software & Package Prerequisites
 
 All processes are engineered within the R Statistical Environment ($>4.0.0$). Ensure you have the following processing libraries installed:
